@@ -1,0 +1,25 @@
+sudo apt install nginx
+
+cd /etc/nginx/sites-avaliable
+
+vi default 
+
+server {
+    server_name build.kovaion.ai www.build.kovaion.ai;  # Replace with your domain or IP address
+
+    location / {
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_pass http://65.2.44.134:8080;
+    }
+}
+
+letrs encrypt ssl install step
+
+
+sudo apt install certbot python3-certbot-nginx
+
+sudo certbot --nginx -d example.com -d www.example.com
+
